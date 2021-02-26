@@ -131,9 +131,7 @@ const LoginForm = props => {
 
                 {props.signupError && (
                   <div className='form-field'>
-                    <div className='form-error'>
-                      Something weird happened...
-                    </div>
+                    <div className='form-error'>{props.signupError}</div>
                   </div>
                 )}
 

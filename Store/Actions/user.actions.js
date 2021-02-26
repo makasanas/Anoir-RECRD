@@ -8,7 +8,7 @@ export const signUpUser = data => async dispatch => {
     );
     dispatch({ type: 'SIGNUP_SUCCESS' });
   } catch (e) {
-    dispatch({ type: 'SIGNUP_FAILURE' });
+    dispatch({ type: 'SIGNUP_FAILURE', payload: e.response.data.message });
   }
 };
 

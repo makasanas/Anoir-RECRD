@@ -2,7 +2,8 @@ const initialState = {
   error: false,
   userExistError: null,
   emailExistError: null,
-  signupError: false,
+  signUpSuccess: false,
+  signupError: null,
 };
 
 export default (state = initialState, action) => {
@@ -10,37 +11,39 @@ export default (state = initialState, action) => {
     case 'USER_EXIST_SUCCESS':
       return {
         ...state,
-        signupError: false,
+        signupError: null,
         userExistError: null,
       };
     case 'USER_EXIST_FAILURE':
       return {
         ...state,
-        signupError: false,
+        signupError: null,
         userExistError: action.payload,
       };
 
     case 'EMAIL_EXIST_SUCCES':
       return {
         ...state,
-        signupError: false,
+        signupError: null,
         emailExistError: null,
       };
     case 'EMAIL_EXIST_FAILURE':
       return {
         ...state,
-        signupError: false,
+        signupError: null,
         emailExistError: action.payload,
       };
     case 'SIGNUP_SUCCESS':
       return {
         ...state,
-        signupError: false,
+        signUpSuccess: true,
+        signupError: null,
       };
     case 'SIGNUP_FAILURE':
       return {
         ...state,
-        signupError: true,
+        signUpSuccess: false,
+        signupError: action.payload,
       };
 
     default:

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../styles/index.scss';
 import logo from '../static/logo.svg';
 import banner from '../static/banner.png';
@@ -6,7 +7,7 @@ import LoginForm from './loginForm';
 import ThankYou from './thankyou';
 import TermsConditions from './popup';
 
-const HomePage = () => {
+const HomePage = props => {
   return (
     <div className='content-wrapper'>
       {/* <TermsConditions /> */}
@@ -47,8 +48,7 @@ const HomePage = () => {
           </svg>
         </div>
         <div className='form-wrapper'>
-          <LoginForm />
-          {/* <ThankYou /> */}
+          {props.signUpSuccess ? <ThankYou /> : <LoginForm />}
         </div>
         <div className='footer'>
           <p className='copyright'>© 2021 Recrd, Inc. All Rights Reserved</p>
@@ -59,4 +59,8 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const mapStateToProps = state => ({
+  signUpSuccess: state ? state.signUpSuccess : false,
+});
+
+export default connect(mapStateToProps, null)(HomePage);
